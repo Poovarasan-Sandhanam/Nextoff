@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "720075457474",
+    "project_id": "nextoff-fd477",
+    "storage_bucket": "nextoff-fd477.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720075457474:android:58db6221eeeff0f489cc5b",
+        "android_client_info": {
+          "package_name": "com.company.nextoff"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzvU86QjqkE0tgD1fwv1r2km07PwSVIfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

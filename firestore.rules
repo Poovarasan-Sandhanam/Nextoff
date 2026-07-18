@@ -1,0 +1,34 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{fcmToken} {
+      // Allow getting a single document by token, but prevent list queries.
+      allow get: if true;
+      allow list: if false;
+
+      // Allow creating or updating a user registration only with valid data shapes.
+      allow create, update: if
+        request.resource.id == fcmToken &&
+        (!('fcmToken' in request.resource.data) || request.resource.data.fcmToken == fcmToken) &&
+        (!('region' in request.resource.data) || request.resource.data.region in ['ew', 'sc', 'ni']) &&
+        (!('notificationsEnabled' in request.resource.data) || request.resource.data.notificationsEnabled is bool) &&
+        (!('paydayConfig' in request.resource.data) || (
+          request.resource.data.paydayConfig.type in ['fixed', 'nth_weekday'] &&
+          (
+            request.resource.data.paydayConfig.type == 'fixed' ? 
+              (request.resource.data.paydayConfig.fixedDay is int && 
+               request.resource.data.paydayConfig.fixedDay >= 1 && 
+               request.resource.data.paydayConfig.fixedDay <= 31) :
+              (request.resource.data.paydayConfig.nthWeekday.occurrence in ['first', 'second', 'third', 'fourth', 'last'] && 
+               request.resource.data.paydayConfig.nthWeekday.dayOfWeek is int && 
+               request.resource.data.paydayConfig.nthWeekday.dayOfWeek >= 0 && 
+               request.resource.data.paydayConfig.nthWeekday.dayOfWeek <= 6)
+          )
+        ));
+
+      // Prevent anyone from deleting registration tokens from the client.
+      allow delete: if false;
+    }
+  }
+}
