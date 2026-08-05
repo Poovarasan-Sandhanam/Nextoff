@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build and export outputs
+.expo/
+dist/
+web-build/
+android/app/build/
+android/.gradle/
+android/build/
+ios/Pods/
+ios/build/
+*.xcarchive
+
+# Security & Secrets (Prevent committing API keys, tokens, and credentials)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+*.cer
+*.crt
+*.der
+*.asc
+service-account*.json
+*serviceAccount*.json
+*firebase-adminsdk*.json
+credentials.json
+secrets.json
+api_key*.json
+local.properties
+ios/.xcode.env.local
+
+# Logs & temp files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
