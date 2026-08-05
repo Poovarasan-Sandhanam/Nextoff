@@ -10,7 +10,16 @@
     "ios": {
       "icon": "./assets/expo.icon",
       "bundleIdentifier": "com.company.nextoff",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "entitlements": {
+        "aps-environment": "development"
+      },
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
+      },
+      "appleTeamId": "6J75KC7K4S"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +30,10 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.company.nextoff",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS"
+      ]
     },
     "web": {
       "output": "static",

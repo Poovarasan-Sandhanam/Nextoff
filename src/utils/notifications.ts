@@ -71,6 +71,7 @@ export async function reschedulePaydayNotifications(
       hasPermission === messaging.AuthorizationStatus.PROVISIONAL;
 
     if (enabled && isAuthorized) {
+      await messaging().registerDeviceForRemoteMessages();
       const token = await messaging().getToken();
       console.log("FCM Device Token acquired successfully:", token);
 
@@ -91,6 +92,7 @@ export async function reschedulePaydayNotifications(
     } else {
       console.log("Notifications disabled or not authorized. Checking if token exists to disable in DB...");
       try {
+        await messaging().registerDeviceForRemoteMessages();
         const token = await messaging().getToken();
         if (token) {
           await firestore()

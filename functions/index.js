@@ -2,6 +2,7 @@ const { initializeApp } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 const { getMessaging } = require('firebase-admin/messaging');
 const { onSchedule } = require('firebase-functions/v2/scheduler');
+const { onDocumentCreated } = require('firebase-functions/v2/firestore');
 const { logger } = require('firebase-functions');
 const { 
   isWeekend, 
@@ -195,5 +196,75 @@ exports.dailyPaydayCheck = onSchedule({
     logger.info('Finished daily payday check execution.');
   } catch (error) {
     logger.error('Error in dailyPaydayCheck:', error);
+  }
+});
+
+// Triggered when a new document is created in the 'announcements' collection
+exports.sendAnnouncementNotification = onDocumentCreated('announcements/{announcementId}', async (event) => {
+  const data = event.data.data();
+  if (!data) {
+    logger.warn('No data found in created announcement document.');
+    return;
+  }
+
+  const title = data.title || 'New Announcement! 📣';
+  const body = data.body || 'Open NextOff to see details.';
+
+  logger.info(`New announcement created: "${title}". Preparing to notify users.`);
+
+  try {
+    const usersSnapshot = await db.collection('users')
+      .where('notificationsEnabled', '==', true)
+      .get();
+
+    logger.info(`Found ${usersSnapshot.size} active users to notify.`);
+
+    const sendPromises = [];
+
+    usersSnapshot.forEach((doc) => {
+      const userData = doc.data();
+      const { fcmToken } = userData;
+
+      if (!fcmToken) return;
+
+      const message = {
+        token: fcmToken,
+        notification: {
+          title: title,
+          body: body
+        },
+        android: {
+          notification: {
+            sound: 'default'
+          }
+        },
+        apns: {
+          payload: {
+            aps: {
+              sound: 'default'
+            }
+          }
+        }
+      };
+
+      sendPromises.push(
+        messaging.send(message)
+          .then(() => {
+            logger.info(`Successfully sent announcement to user token: ${doc.id}`);
+          })
+          .catch((error) => {
+            logger.error(`Error sending announcement to user token: ${doc.id}`, error);
+            if (error.code === 'messaging/registration-token-not-registered') {
+              logger.info(`Removing unregistered token from Firestore: ${doc.id}`);
+              return db.collection('users').doc(doc.id).delete();
+            }
+          })
+      );
+    });
+
+    await Promise.all(sendPromises);
+    logger.info('Finished sending announcement notifications.');
+  } catch (error) {
+    logger.error('Error in sendAnnouncementNotification:', error);
   }
 });
