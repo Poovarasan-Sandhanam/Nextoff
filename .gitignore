@@ -34,6 +34,10 @@ api_key*.json
 local.properties
 ios/.xcode.env.local
 
+# Firebase / Google Services configuration files containing API keys
+google-services.json
+GoogleService-Info.plist
+
 # Logs & temp files
 *.log
 npm-debug.log*

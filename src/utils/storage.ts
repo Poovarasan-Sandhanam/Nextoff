@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { UserSettings } from '../types';
+import { UserSettings } from '@/types';
 
 const SETTINGS_KEY = 'nextoff_user_settings';
 

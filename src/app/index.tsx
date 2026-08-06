@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ActivityIndicator, Pressable, Text, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { loadSettings, saveSettings } from '../utils/storage';
-import { reschedulePaydayNotifications, setupNotifications } from '../utils/notifications';
-import { UserSettings } from '../types';
-import HomeScreen from '../screens/HomeScreen';
-import HolidaysScreen from '../screens/HolidaysScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import PrivacyScreen from '../screens/PrivacyScreen';
+import { loadSettings, saveSettings } from '@/utils/storage';
+import { reschedulePaydayNotifications, setupNotifications } from '@/utils/notifications';
+import { UserSettings } from '@/types';
+import HomeScreen from '@/screens/HomeScreen';
+import HolidaysScreen from '@/screens/HolidaysScreen';
+import SettingsScreen from '@/screens/SettingsScreen';
+import PrivacyScreen from '@/screens/PrivacyScreen';
 
 export default function MainApp() {
   const [settings, setSettings] = useState<UserSettings | null>(null);

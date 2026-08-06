@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Pressable, ScrollView } from 'react-native';
-import { PaydayConfig } from '../types';
-import { Spacing } from '../constants/theme';
+import { PaydayConfig } from '@/types';
+import { Spacing } from '@/constants/theme';
 
 interface PaydaySelectorProps {
   config: PaydayConfig;

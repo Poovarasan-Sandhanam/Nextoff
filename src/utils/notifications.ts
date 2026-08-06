@@ -1,7 +1,7 @@
 import messaging from "@react-native-firebase/messaging";
 import firestore from "@react-native-firebase/firestore";
 import { Platform } from "react-native";
-import { PaydayConfig, Region } from "../types";
+import { PaydayConfig, Region } from "@/types";
 import { loadSettings } from "./storage";
 
 if (Platform.OS !== "web") {

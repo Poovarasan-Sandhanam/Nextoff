@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Text, Switch, Pressable, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { UserSettings, Region, PaydayConfig } from '../types';
-import PaydaySelector from '../components/PaydaySelector';
-import { Spacing } from '../constants/theme';
-import { requestNotificationPermissions } from '../utils/notifications';
+import { UserSettings, Region, PaydayConfig } from '@/types';
+import PaydaySelector from '@/components/PaydaySelector';
+import { Spacing } from '@/constants/theme';
+import { requestNotificationPermissions } from '@/utils/notifications';
 
 interface SettingsScreenProps {
   settings: UserSettings;

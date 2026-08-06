@@ -41,6 +41,19 @@ This command will move the starter code to the **app-example** directory and cre
 - If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
 - Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
 
+## Firebase Configuration
+
+This project uses Firebase. Due to security best practices, the configuration files containing API keys and credentials are **not** committed to version control.
+
+To run or build the project locally:
+1. Obtain the configuration files from the Firebase Console for your project.
+2. Place `google-services.json` in the root directory and under [android/app/google-services.json](file:///Users/poovarasan/Development/RN/Nextoff/android/app/google-services.json).
+3. Place `GoogleService-Info.plist` in the root directory and under [ios/NextOff/GoogleService-Info.plist](file:///Users/poovarasan/Development/RN/Nextoff/ios/NextOff/GoogleService-Info.plist).
+4. Copy [.env.example](file:///Users/poovarasan/Development/RN/Nextoff/.env.example) to `.env` or `.env.local` to configure environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:

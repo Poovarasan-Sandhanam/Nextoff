@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView, Text, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { calculateNextPayday, calculateNextBankHoliday, getDaysRemaining } from '../utils/dateHelpers';
-import { UserSettings } from '../types';
-import CountdownCard from '../components/CountdownCard';
-import { Spacing } from '../constants/theme';
+import { calculateNextPayday, calculateNextBankHoliday, getDaysRemaining } from '@/utils/dateHelpers';
+import { UserSettings } from '@/types';
+import CountdownCard from '@/components/CountdownCard';
+import { Spacing } from '@/constants/theme';
 
 interface HomeScreenProps {
   settings: UserSettings;

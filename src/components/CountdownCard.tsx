@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { format } from 'date-fns';
-import { Spacing } from '../constants/theme';
+import { Spacing } from '@/constants/theme';
 
 interface CountdownCardProps {
   title: string;

@@ -12,8 +12,8 @@ import {
   isAfter,
   isSameDay
 } from 'date-fns';
-import bankHolidaysData from '../data/bankHolidays.json';
-import { PaydayConfig, Region, BankHoliday } from '../types';
+import bankHolidaysData from '@/data/bankHolidays.json';
+import { PaydayConfig, Region, BankHoliday } from '@/types';
 
 // Cast the imported JSON to the BankHoliday array type
 const bankHolidays = bankHolidaysData as BankHoliday[];

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, FlatList, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { format } from 'date-fns';
-import { getBankHolidaysForRegion } from '../utils/dateHelpers';
-import { Region } from '../types';
-import { Spacing } from '../constants/theme';
+import { getBankHolidaysForRegion } from '@/utils/dateHelpers';
+import { Region } from '@/types';
+import { Spacing } from '@/constants/theme';
 
 interface HolidaysScreenProps {
   defaultRegion: Region;

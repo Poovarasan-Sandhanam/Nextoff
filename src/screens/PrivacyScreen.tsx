@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, ScrollView, Pressable, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { Spacing } from '../constants/theme';
+import { Spacing } from '@/constants/theme';
 
 interface PrivacyScreenProps {
   onBack: () => void;
